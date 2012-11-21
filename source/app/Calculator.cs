@@ -17,7 +17,6 @@ namespace app
       connection.Open();
       var command = connection.CreateCommand();
       command.ExecuteNonQuery();
-      connection.Dispose();
       return i + i1;
     }
   }
