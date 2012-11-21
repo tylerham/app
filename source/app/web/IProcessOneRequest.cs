@@ -1,8 +1,7 @@
 ﻿namespace app.web
 {
-  public interface IProcessOneRequest
+  public interface IProcessOneRequest : ISupportAUserFeature
   {
-    void run(IContainRequestDetails request);
     bool can_process(IContainRequestDetails request);
   }
 }

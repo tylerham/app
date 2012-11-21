@@ -18,18 +18,39 @@ namespace app.specs
       Establish c = () =>
       {
         request = fake.an<IContainRequestDetails>();
-        a_resource_type = fake.an<IDescribeAResource>();
+        depends.on<IMatchARequest>(x =>
+        {
+          x.ShouldEqual(request);
+          return true;
+        });
       };
 
       Because b = () =>
        result = sut.can_process(request);
 
-      It should_check_request_resource_type = () => 
-       request.received(x => x.is_requesting_resource_type(a_resource_type));
+      It should_make_its_decision_by_using_its_request_specification = () =>
+        result.ShouldBeTrue();
 
       static IContainRequestDetails request;
       static bool result;
-      static IDescribeAResource a_resource_type;
+    }
+
+    public class when_processing_a_request : concern
+    {
+      Establish c = () =>
+      {
+        request = fake.an<IContainRequestDetails>();
+        feature = depends.on<ISupportAUserFeature>();
+      };
+
+      Because b = () =>
+        sut.run(request);
+
+      It should_run_the_application_feature = () =>
+        feature.received(x => x.run(request));
+
+      static IContainRequestDetails request;
+      static ISupportAUserFeature feature;
     }
   }
 }

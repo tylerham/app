@@ -79,16 +79,18 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="MessageGenerator.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewTheMainDepartmentsInTheStore.cs" />
     <Compile Include="web\aspnet\BasicHandler.cs" />
     <Compile Include="web\CommandRegistry.cs" />
     <Compile Include="web\FrontController.cs" />
     <Compile Include="web\IContainRequestDetails.cs" />
     <Compile Include="web\ICreateControllerRequests.cs" />
     <Compile Include="web\ICreateTheCommandWhenOneCantBeFound.cs" />
-    <Compile Include="web\IDescribeAResource.cs" />
     <Compile Include="web\IFindCommands.cs" />
+    <Compile Include="web\IMatchARequest.cs" />
     <Compile Include="web\IProcessOneRequest.cs" />
     <Compile Include="web\IProcessRequests.cs" />
+    <Compile Include="web\ISupportAUserFeature .cs" />
     <Compile Include="web\RequestCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
