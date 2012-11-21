@@ -12,6 +12,6 @@ namespace app.web
     }
 
     public IProcessOneRequest get_the_command_that_can_process(IContainRequestDetails request) { return 
-      _commands.LastOrDefault(c => c.can_process(request)); }
+      _commands.Last(c => c.can_process(request)); }
   }
 }
