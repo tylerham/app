@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 
 namespace app.web.core.stubs
 {
@@ -11,9 +12,9 @@ namespace app.web.core.stubs
 
     class StubRequest : IContainRequestDetails
     {
-    	public ModelData get_request_model<ModelData>()
+    	public ModelData map<ModelData>()
     	{
-    		throw new System.NotImplementedException();
+    	  return Activator.CreateInstance<ModelData>();
     	}
     }
   }

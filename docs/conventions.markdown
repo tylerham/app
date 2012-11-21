@@ -16,3 +16,4 @@
 4. Web Application Conventions
   * 1 Logical View Per Presentation Model
   * 1 Command Per Unique Request
+  * 1 Model In - 1 Model Out

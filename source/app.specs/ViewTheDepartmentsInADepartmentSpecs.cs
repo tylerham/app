@@ -25,7 +25,7 @@ namespace app.specs
 				
 				department_repository = depends.on<IDepartmentRepository>();
 				main_department = new Department();
-				request.setup(x => x.get_request_model<Department>()).Return(main_department);
+				request.setup(x => x.map<Department>()).Return(main_department);
 
 				department_repository.setup(x => x.get_the_departments_in(main_department)).Return(sub_departments);
 
