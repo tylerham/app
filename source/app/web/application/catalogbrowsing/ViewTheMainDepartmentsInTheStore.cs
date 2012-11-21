@@ -2,9 +2,16 @@
 {
 	public class ViewTheMainDepartmentsInTheStore : ISupportAUserFeature
 	{
-		public void run(IContainRequestDetails request)
+	  IDepartmentRepository department_repository;
+
+	  public ViewTheMainDepartmentsInTheStore(IDepartmentRepository department_repository)
+	  {
+	    this.department_repository = department_repository;
+	  }
+
+	  public void run(IContainRequestDetails request)
 		{
-			throw new System.NotImplementedException();
+		  department_repository.get_the_main_departments();
 		}
 	}
 }
