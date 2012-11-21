@@ -5,20 +5,21 @@ namespace app.web
 {
 	public class CommandRegistry : IFindCommands
 	{
-		readonly IEnumerable<IProcessOneRequest> processors;
-		readonly ICreateTheCommandWhenOneCantBeFound _specialCommand;
+		 IEnumerable<IProcessOneRequest> processors;
+		 ICreateTheCommandWhenOneCantBeFound missing_command_factory;
 
-		public CommandRegistry(IEnumerable<IProcessOneRequest> processors, ICreateTheCommandWhenOneCantBeFound specialCommand)
+
+	  public CommandRegistry(IEnumerable<IProcessOneRequest> processors, ICreateTheCommandWhenOneCantBeFound missing_command_factory)
 		{
 			this.processors = processors;
-			_specialCommand = specialCommand;
+			this.missing_command_factory = missing_command_factory;
 		}
 
 		public IProcessOneRequest get_the_command_that_can_process(IContainRequestDetails request)
 		{
 			var match = processors.FirstOrDefault(c => c.can_process(request));
 
-			return match ?? _specialCommand();
+			return match ?? missing_command_factory();
 		}
 	}
 }
