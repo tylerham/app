@@ -1,0 +1,2 @@
+[Core]
+our_setting = This is a setting
