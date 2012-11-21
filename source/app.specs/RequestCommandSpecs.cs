@@ -1,6 +1,7 @@
 ﻿using Machine.Specifications;
 using app.web;
 using developwithpassion.specifications.rhinomocks;
+using developwithpassion.specifications.extensions;
 
 namespace app.specs
 {
@@ -21,8 +22,8 @@ namespace app.specs
 
       Because b = () =>
        result =  sut.can_process(request);
-
-      It first_observation = () =>
+      
+      It should_be_able_to_process_the_request = () => result.ShouldBeTrue();
 
       static IContainRequestDetails request;
       static bool result;
