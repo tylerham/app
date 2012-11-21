@@ -5,24 +5,33 @@ namespace app
 {
   public class Calculator
   {
-  	private readonly IDbConnection _connection;
-	private readonly IDbCommand _command;
+    IDbConnection connection;
+    IDbCommand command;
 
-  	public Calculator(IDbConnection connection)
-  	{
-  		_connection = connection;
-		_command = _connection.CreateCommand();
-  	}
-
-  	public int add(int i, int i1)
+    public Calculator(IDbConnection connection)
     {
-        if (i <0 || i1 < 0)
-            throw new ArgumentException("Dumb calculator cannot add negative numbers. Maybe try the smart calculator?");
+      this.connection = connection;
+      command = this.connection.CreateCommand();
+    }
 
-		_connection.Open();
-		_command.ExecuteNonQuery();
+    public int add(int i, int i1)
+    {
+      if (i < 0 || i1 < 0)
+        throw new ArgumentException("Dumb calculator cannot add negative numbers. Maybe try the smart calculator?");
 
-        return i + i1;
+      using (connection)
+      using (var command = connection.CreateCommand())
+      {
+        connection.Open();
+        command.ExecuteNonQuery();
+      }
+
+      return i + i1;
+    }
+
+    public void shut_down()
+    {
+      throw new NotImplementedException();
     }
   }
 }
