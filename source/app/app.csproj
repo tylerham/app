@@ -80,6 +80,7 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewTheMainDepartmentsInTheStore.cs" />
+    <Compile Include="web\application\IDepartmentRepository.cs" />
     <Compile Include="web\aspnet\BasicHandler.cs" />
     <Compile Include="web\CommandRegistry.cs" />
     <Compile Include="web\FrontController.cs" />
