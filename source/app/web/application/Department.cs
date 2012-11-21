@@ -1,6 +1,7 @@
 namespace app.web.application
 {
-    public class Department
-    {
-    }
+  public class Department
+  {
+    public string name { get; set; }
+  }
 }
