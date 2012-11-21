@@ -5,6 +5,14 @@ using app.web.application.catalogbrowsing;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
 
+namespace app.web.application
+{
+    public interface IDisplayStoreDepartments
+    {
+        void display_departments();
+    }
+}
+
 namespace app.specs
 {
   [Subject(typeof(ViewTheMainDepartmentsInTheStore))]
@@ -21,6 +29,7 @@ namespace app.specs
       {
         request = fake.an<IContainRequestDetails>();
         department_repository = depends.on<IDepartmentRepository>();
+        departments_view = depends.on<IDisplayStoreDepartments>();
       };
 
       Because b = () =>
@@ -29,8 +38,15 @@ namespace app.specs
       It should_get_the_list_of_departments = () =>
         department_repository.received(x => x.get_the_main_departments());
 
+        private It should_display_departments =
+            () =>
+                {
+                    departments_view.received(x => x.display_departments());
+                };
+
       static IContainRequestDetails request;
       static IDepartmentRepository department_repository;
+      static IDisplayStoreDepartments departments_view;
     }
   }
 }
