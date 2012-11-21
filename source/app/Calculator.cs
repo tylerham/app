@@ -21,18 +21,17 @@ namespace app
       if (i < 0 || i1 < 0)
         throw new ArgumentException("Dumb calculator cannot add negative numbers. Maybe try the smart calculator?");
 
-        connection.Open();
-        command.ExecuteNonQuery();
+      connection.Open();
+      command.ExecuteNonQuery();
 
       return i + i1;
     }
 
-      public void shut_down()
-      {
-          if (!Thread.CurrentPrincipal.IsInRole("admin"))
-              throw new SecurityException();
-      }
-  }
-}
+    public void shut_down()
+    {
+      if (Thread.CurrentPrincipal.IsInRole("admin")) return;
+
+      throw new SecurityException();
+    }
   }
 }
