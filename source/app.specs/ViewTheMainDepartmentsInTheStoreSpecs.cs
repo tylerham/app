@@ -5,48 +5,41 @@ using app.web.application.catalogbrowsing;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
 
-namespace app.web.application
-{
-    public interface IDisplayStoreDepartments
-    {
-        void display_departments();
-    }
-}
-
 namespace app.specs
 {
-  [Subject(typeof(ViewTheMainDepartmentsInTheStore))]
-  public class ViewTheMainDepartmentsInTheStoreSpecs
-  {
-    public abstract class concern : Observes<ISupportAUserFeature,
-                                      ViewTheMainDepartmentsInTheStore>
+    [Subject(typeof (ViewTheMainDepartmentsInTheStore))]
+    public class ViewTheMainDepartmentsInTheStoreSpecs
     {
-    }
+        public abstract class concern : Observes<ISupportAUserFeature,
+                                            ViewTheMainDepartmentsInTheStore>
+        {
+        }
 
-    public class when_run : concern
-    {
-      Establish c = () =>
-      {
-        request = fake.an<IContainRequestDetails>();
-        department_repository = depends.on<IDepartmentRepository>();
-        departments_view = depends.on<IDisplayStoreDepartments>();
-      };
-
-      Because b = () =>
-        sut.run(request);
-
-      It should_get_the_list_of_departments = () =>
-        department_repository.received(x => x.get_the_main_departments());
-
-        private It should_display_departments =
-            () =>
+        public class when_run : concern
+        {
+            private Establish c = () =>
                 {
-                    departments_view.received(x => x.display_departments());
+                    request = fake.an<IContainRequestDetails>();
+                    department_repository = depends.on<IDepartmentRepository>();
+                    departments_view = depends.on<IDisplayStoreDepartments>();
                 };
 
-      static IContainRequestDetails request;
-      static IDepartmentRepository department_repository;
-      static IDisplayStoreDepartments departments_view;
+            private Because b = () =>
+                                sut.run(request);
+
+            private It should_get_the_list_of_departments = () =>
+                                                            department_repository.received(
+                                                                x => x.get_the_main_departments());
+
+            private It should_display_departments =
+                () =>
+                    {
+                        departments_view.received(x => x.display_departments());
+                    };
+
+            private static IContainRequestDetails request;
+            private static IDepartmentRepository department_repository;
+            private static IDisplayStoreDepartments departments_view;
+        }
     }
-  }
 }
