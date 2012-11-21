@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Security;
+using System.Threading;
 
 namespace app
 {
@@ -19,19 +21,16 @@ namespace app
       if (i < 0 || i1 < 0)
         throw new ArgumentException("Dumb calculator cannot add negative numbers. Maybe try the smart calculator?");
 
-      using (connection)
-      using (var command = connection.CreateCommand())
-      {
         connection.Open();
         command.ExecuteNonQuery();
-      }
 
       return i + i1;
     }
 
-    public void shut_down()
-    {
-      throw new NotImplementedException();
-    }
+      public void shut_down()
+      {
+          if (!Thread.CurrentPrincipal.IsInRole("admin"))
+              throw new SecurityException();
+      }
   }
 }
