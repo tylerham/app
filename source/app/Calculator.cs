@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.Security;
+using System.Threading;
 
 namespace app
 {
@@ -31,7 +33,8 @@ namespace app
 
     public void shut_down()
     {
-      throw new NotImplementedException();
+      if(!Thread.CurrentPrincipal.IsInRole("Anything"))
+        throw new SecurityException("Current Principal can not be in role 'Anything'");
     }
   }
 }
