@@ -32,10 +32,7 @@ namespace app.specs
                                                                 x => x.get_the_main_departments());
 
             private It should_display_departments =
-                () =>
-                    {
-                        departments_view.received(x => x.display_departments());
-                    };
+                () => departments_view.received(x => x.display_departments());
 
             private static IContainRequestDetails request;
             private static IDepartmentRepository department_repository;
