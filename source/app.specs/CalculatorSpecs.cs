@@ -29,7 +29,6 @@ namespace app.specs
 
       It should_throw_an_argument_exception = () =>
         spec.exception_thrown.ShouldBeAn<ArgumentException>();
-
     } 
   }
 }
