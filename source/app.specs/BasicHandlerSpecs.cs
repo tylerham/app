@@ -1,25 +1,21 @@
-﻿ using System;
- using System.IO;
- using System.Web;
- using Machine.Specifications;
- using app.specs.utility;
- using app.web;
- using app.web.aspnet;
- using developwithpassion.specifications.rhinomocks;
- using developwithpassion.specifications.extensions;
+﻿using System.Web;
+using Machine.Specifications;
+using app.specs.utility;
+using app.web;
+using app.web.aspnet;
+using developwithpassion.specifications.extensions;
+using developwithpassion.specifications.rhinomocks;
 
 namespace app.specs
-{  
-  [Subject(typeof(BasicHandler))]  
+{
+  [Subject(typeof(BasicHandler))]
   public class BasicHandlerSpecs
   {
     public abstract class concern : Observes<IHttpHandler,
                                       BasicHandler>
     {
-        
     }
 
-   
     public class when_processing_a_new_http_context : concern
     {
       Establish c = () =>
@@ -29,7 +25,8 @@ namespace app.specs
         a_raw_aspnet_request = ObjectFactory.web.create_request();
         a_new_controller_request = fake.an<IContainRequestDetails>();
 
-        request_factory.setup(x => x.create_a_controller_request_from(a_raw_aspnet_request)).Return(a_new_controller_request);
+        request_factory.setup(x => x.create_a_controller_request_from(a_raw_aspnet_request))
+                       .Return(a_new_controller_request);
       };
 
       Because b = () =>
