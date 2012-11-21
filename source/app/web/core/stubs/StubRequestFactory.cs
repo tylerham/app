@@ -11,6 +11,10 @@ namespace app.web.core.stubs
 
     class StubRequest : IContainRequestDetails
     {
+    	public ModelData get_request_model<ModelData>()
+    	{
+    		throw new System.NotImplementedException();
+    	}
     }
   }
 }

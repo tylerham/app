@@ -9,11 +9,11 @@ using developwithpassion.specifications.rhinomocks;
 
 namespace app.specs
 {
-	[Subject(typeof(ViewTheMainDepartmentsInTheStore))]
-	public class ViewTheMainDepartmentsInTheStoreSpecs
+	[Subject(typeof(ViewTheDepartmentsInADepartment))]
+	public class ViewTheDepartmentsInADepartmentSpecs
 	{
 		public abstract class concern : Observes<ISupportAUserFeature,
-										  ViewTheMainDepartmentsInTheStore>
+									 ViewTheDepartmentsInADepartment>
 		{
 		}
 
@@ -22,11 +22,14 @@ namespace app.specs
 			Establish c = () =>
 			{
 				request = fake.an<IContainRequestDetails>();
+				
 				department_repository = depends.on<IDepartmentRepository>();
+				main_department = new Department();
+				request.setup(x => x.get_request_model<Department>()).Return(main_department);
 
-				department_repository.setup(x => x.get_the_main_departments()).Return(main_departments);
+				department_repository.setup(x => x.get_the_departments_in(main_department)).Return(sub_departments);
 
-				departments_view = depends.on<IDisplayInformation>();
+				sub_departments_view = depends.on<IDisplayInformation>();
 			};
 
 			Because b = () =>
@@ -37,12 +40,13 @@ namespace app.specs
 			};
 
 			It should_display_departments =
-			  () => departments_view.received(x => x.display(main_departments));
+			  () => sub_departments_view.received(x => x.display(sub_departments));
 
 			static IContainRequestDetails request;
 			static IDepartmentRepository department_repository;
-			static IDisplayInformation departments_view;
-			static IEnumerable<Department> main_departments = new List<Department>();
-		}
+			static IDisplayInformation sub_departments_view;
+			static IEnumerable<Department> sub_departments = new List<Department>();
+			static Department main_department;
+		}	
 	}
 }
