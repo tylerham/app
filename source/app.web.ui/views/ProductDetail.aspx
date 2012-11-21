@@ -17,7 +17,7 @@
 												<td id="descriptionLabel" runat="server"></td>
 											</tr>
 											<tr valign="top">
-												<td id="Td1" align="right" colspan="2" runat="server">
+												<td id="Td1" align="second" colspan="2" runat="server">
 													<asp:Button id="addToCartButton" runat="server" Text="Add To Cart" CssClass="NormalButton"></asp:Button></td>
 											</tr>
 										</table>
