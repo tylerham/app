@@ -31,7 +31,6 @@ namespace app
 
     public void shut_down()
     {
-      throw new NotImplementedException();
     }
   }
 }

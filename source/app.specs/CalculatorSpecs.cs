@@ -37,6 +37,19 @@ namespace app.specs
         It should_throw_a_security_exception = () =>
           spec.exception_thrown.ShouldBeAn<SecurityException>();
       }
+      public class and_they_are_in_the_correct_security_group
+      {
+        Establish c = () =>
+          principal.setup(x => x.IsInRole(Arg<string>.Is.Anything)).Return(true);
+
+        Because b = () =>
+          sut.shut_down();
+
+        It should_not_fail = () =>
+        {
+        };
+
+      }
 
       static IPrincipal principal;
     }
