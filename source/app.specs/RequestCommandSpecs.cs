@@ -1,5 +1,6 @@
 ﻿using Machine.Specifications;
 using app.web;
+using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
 
 namespace app.specs
@@ -17,15 +18,18 @@ namespace app.specs
       Establish c = () =>
       {
         request = fake.an<IContainRequestDetails>();
+        a_resource_type = fake.an<IDescribeAResource>();
       };
 
       Because b = () =>
-       result =  sut.can_process(request);
+       result = sut.can_process(request);
 
-      It first_observation = () =>
+      It should_check_request_resource_type = () => 
+       request.received(x => x.is_requesting_resource_type(a_resource_type));
 
       static IContainRequestDetails request;
       static bool result;
+      static IDescribeAResource a_resource_type;
     }
   }
 }
