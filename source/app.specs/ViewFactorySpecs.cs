@@ -32,7 +32,7 @@ namespace app.specs
 								actual_result = sut.create_view_that_can_render(model_to_show);
 							};
 
-			It should_return_the_expected_view_type = () =>
+			It should_return_the_expected_view_handler = () =>
 			                                          	{
 			                                          		actual_result.ShouldBeTheSameAs(expected_result);
 			                                          	};
