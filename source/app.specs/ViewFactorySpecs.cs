@@ -22,6 +22,7 @@ namespace app.specs
 
 			                 		expected_result = fake.an<IHttpHandler>();
 									the_wrong_result = fake.an<IHttpHandler>();
+
 									page_creator = (path, type) => type == typeof(ADummyModelView) ? expected_result : the_wrong_result;
 									depends.on(page_creator);
 								};
