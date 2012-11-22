@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using app.web.application;
 using app.web.application.catalogbrowsing;
+using app.web.application.stubs;
 
 namespace app.web.core.stubs
 {
@@ -14,9 +15,16 @@ namespace app.web.core.stubs
 
 		public IEnumerator<IProcessOneRequest> GetEnumerator()
 		{
-			yield return new RequestCommand(x => true, new ViewAModel<ViewProductsInDepartmentRequest, IEnumerable<Product>>(new StubDisplayEngine(), input => input.products));
-			yield return new RequestCommand(x => true, new ViewAModel<ViewSubDepartmentsRequest, IEnumerable<Department>>(new StubDisplayEngine(), input => input.departments ));
-			yield return new RequestCommand(x => true, new ViewAModel<ViewMainDepartmentRequest, Department>(new StubDisplayEngine(), input => input.department));
+		  yield return new RequestCommand(x => true,
+		                                  new ViewAReport<IEnumerable<Department>>(new GetTheMainDepartments()));
 		}
+
+	  public class GetTheMainDepartments : IFetchAReport<IEnumerable<Department>>
+	  {
+	    public IEnumerable<Department> fetch_using(IContainRequestDetails request)
+	    {
+	      return new StubCatalog().get_the_main_departments();
+	    }
+	  }
 	}
 }
