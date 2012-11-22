@@ -8,7 +8,7 @@ namespace app.web.core.stubs
     public void display<PresentationModel>(PresentationModel model)
     {
       HttpContext.Current.Items.Add("blah",model);
-      HttpContext.Current.Server.Transfer("~/views/DepartmentBrowser.aspx");
+      HttpContext.Current.Server.Transfer("~/views/ProductBrowser.aspx");
     }
   }
 }

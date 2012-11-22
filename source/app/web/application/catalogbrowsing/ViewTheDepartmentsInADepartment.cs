@@ -6,10 +6,10 @@ namespace app.web.application.catalogbrowsing
 {
   public class ViewTheDepartmentsInADepartment : ISupportAUserFeature
   {
-    IDepartmentRepository department_repository;
+    IFetchStoreInformation department_repository;
     IDisplayInformation display_engine;
 
-    public ViewTheDepartmentsInADepartment(IDepartmentRepository department_repository,
+    public ViewTheDepartmentsInADepartment(IFetchStoreInformation department_repository,
                                            IDisplayInformation sub_department_view)
     {
       this.department_repository = department_repository;
@@ -17,7 +17,7 @@ namespace app.web.application.catalogbrowsing
     }
 
     public ViewTheDepartmentsInADepartment()
-      : this(new StubDepartmentRepository(), new StubDisplayEngine())
+      : this(new StubCatalog(), new StubDisplayEngine())
     {
     }
 

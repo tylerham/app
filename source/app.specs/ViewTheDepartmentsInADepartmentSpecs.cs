@@ -24,7 +24,7 @@ namespace app.specs
 				request = fake.an<IContainRequestDetails>();
 				
         input_model = new ViewDepartmentRequest();
-				department_repository = depends.on<IDepartmentRepository>();
+				department_repository = depends.on<IFetchStoreInformation>();
 				request.setup(x => x.map<ViewDepartmentRequest>()).Return(input_model);
 
 				department_repository.setup(x => x.get_the_departments_using(input_model)).Return(sub_departments);
@@ -43,7 +43,7 @@ namespace app.specs
 			  () => sub_departments_view.received(x => x.display(sub_departments));
 
 			static IContainRequestDetails request;
-			static IDepartmentRepository department_repository;
+			static IFetchStoreInformation department_repository;
 			static IDisplayInformation sub_departments_view;
 			static IEnumerable<Department> sub_departments = new List<Department>();
 		  static ViewDepartmentRequest input_model;

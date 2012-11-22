@@ -14,9 +14,13 @@ namespace app.web.core.stubs
     public IEnumerator<IProcessOneRequest> GetEnumerator()
     {
       yield return new RequestCommand(x => true,
-                                      new ViewTheDepartmentsInADepartment());
+                                      new ....());
+
       yield return new RequestCommand(x => true,
-                                      new ViewTheMainDepartmentsInTheStore());
+                                      new ....());
+
+      yield return new RequestCommand(x => true,
+                                      new ....());
     }
   }
 }

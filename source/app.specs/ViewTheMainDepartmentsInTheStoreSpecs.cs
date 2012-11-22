@@ -22,7 +22,7 @@ namespace app.specs
 			Establish c = () =>
 			{
 				request = fake.an<IContainRequestDetails>();
-				department_repository = depends.on<IDepartmentRepository>();
+				department_repository = depends.on<IFetchStoreInformation>();
 
 				department_repository.setup(x => x.get_the_main_departments()).Return(main_departments);
 
@@ -40,7 +40,7 @@ namespace app.specs
 			  () => departments_view.received(x => x.display(main_departments));
 
 			static IContainRequestDetails request;
-			static IDepartmentRepository department_repository;
+			static IFetchStoreInformation department_repository;
 			static IDisplayInformation departments_view;
 			static IEnumerable<Department> main_departments = new List<Department>();
 		}
