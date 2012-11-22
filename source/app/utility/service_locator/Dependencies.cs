@@ -11,7 +11,7 @@ namespace app.utility.service_locator
 
     public static IFindDependencies fetch
     {
-      get { throw new NotImplementedException(); }
+      get { return resolution.Invoke(); }
     }
   }
 }
