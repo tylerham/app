@@ -1,21 +1,20 @@
-﻿using System.Web;
-
-namespace app.web.core.aspnet
+﻿namespace app.web.core.aspnet
 {
   public class WebFormsDisplayEngine : IDisplayInformation
   {
-    readonly ICreateViews _viewFactory;
-    readonly HttpContext _request;
+    ICreateViews view_factory;
+    IGetTheCurrentlyExecutingRequest current_request_resolution;
 
-    public WebFormsDisplayEngine(ICreateViews view_factory, HttpContext request)
+
+    public WebFormsDisplayEngine(ICreateViews view_factory, IGetTheCurrentlyExecutingRequest current_request_resolution)
     {
-      _viewFactory = view_factory;
-      _request = request;
+      this.view_factory = view_factory;
+      this.current_request_resolution = current_request_resolution;
     }
 
     public void display<PresentationModel>(PresentationModel model)
     {
-_viewFactory.create_view_that_can_render(model).ProcessRequest(_request);
+      view_factory.create_view_that_can_render(model).ProcessRequest(current_request_resolution());
     }
   }
 }

@@ -25,7 +25,7 @@ namespace app.specs
         the_current_request = ObjectFactory.web.create_request();
 
         view_factory = depends.on<ICreateViews>();
-        depends.on(the_current_request);
+        depends.on<IGetTheCurrentlyExecutingRequest>(() => the_current_request);
 
         view_factory.setup(x => x.create_view_that_can_render(data)).Return(view);
       };
