@@ -23,8 +23,8 @@ namespace app.web.application.catalogbrowsing
 
     public void run(IContainRequestDetails request)
     {
-      var mainDepartment = request.map<Department>();
-      var subDepartments = department_repository.get_the_departments_in(mainDepartment);
+      var mainDepartment = request.map<ViewDepartmentRequest>();
+      var subDepartments = department_repository.get_the_departments_using(mainDepartment);
 
       display_engine.display(subDepartments);
     }
