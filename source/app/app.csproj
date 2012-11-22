@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="utility\service_locator\Container.cs" />
     <Compile Include="utility\service_locator\Dependencies.cs" />
     <Compile Include="utility\service_locator\IFindDependencies .cs" />
     <Compile Include="utility\service_locator\IResolveTheContainerConfiguredAtStartup.cs" />
