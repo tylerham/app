@@ -79,8 +79,12 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="web\application\catalogbrowsing\IDisplayInformation.cs" />
-    <Compile Include="web\application\catalogbrowsing\ViewDepartmentRequest.cs" />
+    <Compile Include="web\application\catalogbrowsing\IGetPresentationDataFromARequest.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewAModel.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewSubDepartmentsRequest.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewMainDepartmentRequest.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewProductsInADepartment.cs" />
+    <Compile Include="web\application\catalogbrowsing\ViewProductsInDepartmentRequest.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewTheDepartmentsInADepartment.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewTheMainDepartmentsInTheStore.cs" />
     <Compile Include="web\application\Department.cs" />
@@ -102,6 +106,7 @@
     <Compile Include="web\core\stubs\StubDisplayEngine.cs" />
     <Compile Include="web\core\stubs\StubRequestFactory.cs" />
     <Compile Include="web\core\stubs\StubSetOfCommands.cs" />
+    <Compile Include="web\core\ViewAModelSpecs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

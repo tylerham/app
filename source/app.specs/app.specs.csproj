@@ -119,6 +119,7 @@
     <Compile Include="FrontControllerSpecs.cs" />
     <Compile Include="RequestCommandSpecs.cs" />
     <Compile Include="utility\ObjectFactory.cs" />
+    <Compile Include="ViewAModelSpecs.cs" />
     <Compile Include="ViewProductsInADepartmentSpecs.cs" />
     <Compile Include="ViewTheDepartmentsInADepartmentSpecs.cs" />
     <Compile Include="ViewTheMainDepartmentsInTheStoreSpecs.cs" />

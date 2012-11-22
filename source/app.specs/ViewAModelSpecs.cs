@@ -8,11 +8,11 @@ using developwithpassion.specifications.rhinomocks;
 
 namespace app.specs
 {
-	[Subject(typeof(ViewProductsInADepartment))]
-	public class ViewProductsInADepartmentSpecs
+	[Subject(typeof(ViewAModel<string, int>))]
+	public class ViewAModelSpecs
 	{
 		public abstract class concern : Observes<ISupportAUserFeature,
-										  ViewProductsInADepartment>
+										  ViewAModel<string, int>>
 		{
 		}
 
@@ -21,12 +21,11 @@ namespace app.specs
 			Establish c = () =>
 			{
 				request = fake.an<IContainRequestDetails>();
+				request_data = "Test";
+				mapper = input => input == request_data ? displayData : -1;			
+				depends.on(mapper);
 
-				input_model = new ViewProductsInDepartmentRequest();
-				department_repository = depends.on<IFetchStoreInformation>();
-				request.setup(x => x.map<ViewProductsInDepartmentRequest>()).Return(input_model);
-
-				department_repository.setup(x => x.get_the_products_using(input_model)).Return(products);
+				request.setup(x => x.map<string>()).Return(request_data);
 
 				display_engine = depends.on<IDisplayInformation>();
 			};
@@ -39,13 +38,13 @@ namespace app.specs
 			};
 
 			It should_display_products =
-			  () => display_engine.received(x => x.display(products));
+			  () => display_engine.received(x => x.display(displayData));
 
 			static IContainRequestDetails request;
-			static IFetchStoreInformation department_repository;
 			static IDisplayInformation display_engine;
-			static IEnumerable<Product> products = new List<Product>();
-			static ViewProductsInDepartmentRequest input_model;
+			static int displayData;
+			static string request_data;
+			static IGetPresentationDataFromARequest<string, int> mapper;
 		}
 	}
 }
