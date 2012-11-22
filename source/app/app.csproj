@@ -78,10 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="utility\service_locator\Dependencies.cs" />
+    <Compile Include="utility\service_locator\IFindDependencies .cs" />
+    <Compile Include="utility\service_locator\IResolveTheContainerConfiguredAtStartup.cs" />
     <Compile Include="web\core\aspnet\ICreateAspxPageInstances.cs" />
     <Compile Include="web\core\aspnet\ICreateViews.cs" />
+    <Compile Include="web\core\aspnet\IDisplayAModel.cs" />
     <Compile Include="web\core\aspnet\IGetTheCurrentlyExecutingRequest.cs" />
     <Compile Include="web\core\aspnet\IGetViewTypeForAModel.cs" />
+    <Compile Include="web\core\aspnet\SimpleView.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="web\core\aspnet\ViewFactory.cs" />
     <Compile Include="web\core\aspnet\WebFormsDisplayEngine.cs" />
     <Compile Include="web\core\IDisplayInformation.cs" />
@@ -106,7 +113,7 @@
     <Compile Include="web\core\IProcessRequests.cs" />
     <Compile Include="web\core\ISupportAUserFeature .cs" />
     <Compile Include="web\core\RequestCommand.cs" />
-    <Compile Include="web\core\stubs\StubDisplayEngine.cs" />
+    <Compile Include="web\core\stubs\StubPathRegistry.cs" />
     <Compile Include="web\core\stubs\StubRequestFactory.cs" />
     <Compile Include="web\core\stubs\StubSetOfCommands.cs" />
     <Compile Include="web\core\ViewAModelSpecs.cs" />

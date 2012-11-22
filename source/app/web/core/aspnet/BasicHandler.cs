@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using app.utility.service_locator;
 using app.web.core.stubs;
 
 namespace app.web.core.aspnet
@@ -14,7 +15,8 @@ namespace app.web.core.aspnet
       this.request_factory = request_factory;
     }
 
-    public BasicHandler():this(new FrontController(),new StubRequestFactory())
+    public BasicHandler():this(Dependencies.fetch.an<IProcessRequests>(),
+      Dependencies.fetch.an<ICreateControllerRequests>())
     {
     }
 

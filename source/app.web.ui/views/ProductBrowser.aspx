@@ -19,8 +19,8 @@ CodeFile="ProductBrowser.aspx.cs" MasterPageFile="App.master" %>
                     </tr>
                 </thead>
                 <%-- for each product--%>
-              <% foreach (var product in ((IEnumerable<Product>) this.Context.Items["blah"]))
-                 { %>
+              <% foreach (var product in this.model){
+                  %>
         <tr class="nonShadedRow">                    
             <td class="ListItem">                    
                 <a href='#'><%= product.name %></a>

@@ -15,8 +15,13 @@ namespace app.web.core.stubs
 
 		public IEnumerator<IProcessOneRequest> GetEnumerator()
 		{
-		  yield return new RequestCommand(x => true,
-		                                  new ViewAReport<IEnumerable<Department>>(new GetTheMainDepartments()));
+      yield break;
+//		  yield return new RequestCommand(x => true,
+//		                                  new ViewAReport<IEnumerable<Department>>(new GetTheMainDepartments()));
+//		  yield return new RequestCommand(x => true,
+//		                                  new ViewAReport<IEnumerable<Product>>(x => new StubCatalog().get_the_products_using(x.map<ViewProductsInDepartmentRequest>())));
+
+
 		}
 
 	  public class GetTheMainDepartments : IFetchAReport<IEnumerable<Department>>
@@ -26,5 +31,6 @@ namespace app.web.core.stubs
 	      return new StubCatalog().get_the_main_departments();
 	    }
 	  }
+
 	}
 }

@@ -5,7 +5,6 @@
     ICreateViews view_factory;
     IGetTheCurrentlyExecutingRequest current_request_resolution;
 
-
     public WebFormsDisplayEngine(ICreateViews view_factory, IGetTheCurrentlyExecutingRequest current_request_resolution)
     {
       this.view_factory = view_factory;

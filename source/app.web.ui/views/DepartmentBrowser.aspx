@@ -3,11 +3,10 @@
 Inherits="app.web.ui.views.DepartmentBrowser"
 CodeFile="DepartmentBrowser.aspx.cs"
  MasterPageFile="App.master" %>
-<%@ Import Namespace="app.web.application" %>
 <asp:Content ID="content" runat="server" ContentPlaceHolderID="childContentPlaceHolder">
     <p class="ListHead">Select An Department</p>
             <table>
-              <% foreach (var department in ((IEnumerable<Department>) this.Context.Items["blah"]))
+              <% foreach (var department in this.model)
                  { %>            
               <tr class="ListItem">
                <td><a href="#"><%= department.name %></td>

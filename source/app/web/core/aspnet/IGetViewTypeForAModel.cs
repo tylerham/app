@@ -1,6 +1,7 @@
-﻿using System;
-
-namespace app.web.core.aspnet
+﻿namespace app.web.core.aspnet
 {
-	public delegate Type IGetViewTypeForAModel(Type modelType);
+  public interface IGetThePathToAViewThatCanDisplay
+  {
+    string get_the_path_to_the_template_for<Model>();
+  }
 }
