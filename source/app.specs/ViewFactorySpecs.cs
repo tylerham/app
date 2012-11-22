@@ -15,7 +15,9 @@ namespace app.specs
 		{
 			Establish that = () =>
 			                 	{
-									page_creator = (path, type) => type == typeof(ADummyModel) ? (object)new ADummyView() : (object)new TheWrongView();
+			                 		expected_view = fake.an<IHttpHandler>();
+									the_wrong_view = fake.an<IHttpHandler>();
+									page_creator = (path, type) => type == typeof(ADummyModel) ? expected_view : the_wrong_view;
 									depends.on(page_creator);
 
 									model_to_show = new ADummyModel();
@@ -23,29 +25,23 @@ namespace app.specs
 
 			Because of = () =>
 							{
-								result = sut.create_view_that_can_render(model_to_show);
+								actual_result = sut.create_view_that_can_render(model_to_show);
 							};
 
-			It should_return_the_expected_view_type = () =>
-			                                        	{
-			                                        		result.ShouldBeOfType<ADummyView>();
-			                                        	};
+			It should_return_the_expected_view= () =>
+			                                          	{
+			                                          		actual_result.ShouldBeTheSameAs(expected_view);
+			                                          	};
 
 			static ADummyModel model_to_show;
-			static IHttpHandler result;
+			static IHttpHandler actual_result;
 			static ICreateAspxPageInstances page_creator;
+			static IHttpHandler expected_view;
+			static IHttpHandler the_wrong_view;
 		}
 	}
 
 	public class ADummyModel
-	{
-	}
-
-	public class ADummyView
-	{
-	}
-
-	public class TheWrongView
 	{
 	}
 }
