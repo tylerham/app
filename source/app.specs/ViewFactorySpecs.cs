@@ -20,9 +20,9 @@ namespace app.specs
 									view_type_finder = model => model.GetType() == typeof(ADummyModel) ? typeof(ADummyModelView) : typeof(TheWrongViewType);
 									depends.on(view_type_finder);
 
-			                 		expected_view = fake.an<IHttpHandler>();
-									the_wrong_view = fake.an<IHttpHandler>();
-									page_creator = (path, type) => type == typeof(ADummyModelView) ? expected_view : the_wrong_view;
+			                 		expected_result = fake.an<IHttpHandler>();
+									the_wrong_result = fake.an<IHttpHandler>();
+									page_creator = (path, type) => type == typeof(ADummyModelView) ? expected_result : the_wrong_result;
 									depends.on(page_creator);
 								};
 
@@ -33,15 +33,18 @@ namespace app.specs
 
 			It should_return_the_expected_view_type = () =>
 			                                          	{
-			                                          		actual_result.ShouldBeTheSameAs(expected_view);
+			                                          		actual_result.ShouldBeTheSameAs(expected_result);
 			                                          	};
 
 			static ADummyModel model_to_show;
 			static IHttpHandler actual_result;
-			static ICreateAspxPageInstances page_creator;
-			static IHttpHandler expected_view;
-			static IHttpHandler the_wrong_view;
+
+			static IHttpHandler expected_result;
+			static IHttpHandler the_wrong_result;
+
 			static IGetViewTypeForAModel view_type_finder;
+			static ICreateAspxPageInstances page_creator;
+
 		}
 	}
 
