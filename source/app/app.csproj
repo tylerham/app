@@ -78,7 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
-    <Compile Include="web\application\catalogbrowsing\IDisplayInformation.cs" />
+    <Compile Include="web\core\aspnet\ICreateViews.cs" />
+    <Compile Include="web\core\aspnet\WebFormsDisplayEngine.cs" />
+    <Compile Include="web\core\IDisplayInformation.cs" />
     <Compile Include="web\application\catalogbrowsing\IGetPresentationDataFromARequest.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewAReport.cs" />
     <Compile Include="web\application\catalogbrowsing\ViewSubDepartmentsRequest.cs" />

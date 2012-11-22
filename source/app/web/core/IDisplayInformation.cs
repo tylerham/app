@@ -1,4 +1,4 @@
-﻿namespace app.web.application.catalogbrowsing
+﻿namespace app.web.core
 {
   public interface IDisplayInformation
   {
