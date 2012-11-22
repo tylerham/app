@@ -26,7 +26,7 @@ namespace app.specs
 								result = sut.create_view_that_can_render(model_to_show);
 							};
 
-			It should_return_the_expected_view = () =>
+			It should_return_the_expected_view_type = () =>
 			                                        	{
 			                                        		result.ShouldBeOfType<ADummyView>();
 			                                        	};
