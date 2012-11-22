@@ -17,12 +17,15 @@ namespace app.specs
    
     public class when_observation_name : concern
     {
-
       Because b = () =>
-        result = sut.an<>()
+        result = sut.an<TestDependency>();
 
-      It first_observation = () =>        
-        
+      It should_be_an_instance_of_test_dependency = () => result.ShouldBeAn<TestDependency>();
+      It should_not_be_null = () => result.ShouldNotBeNull();
+      static TestDependency result;
     }
   }
+
+  class TestDependency
+  {}
 }
