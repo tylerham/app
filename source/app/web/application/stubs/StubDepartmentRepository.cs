@@ -15,5 +15,10 @@ namespace app.web.application.stubs
 		{
 			return Enumerable.Range(1, 5).Select(x => new Department { name = x.ToString("Sub Department 0") });
 		}
+
+	    public IEnumerable<Product> get_the_products_using(ViewDepartmentRequest inputModel)
+	    {
+            return Enumerable.Range(1, 5).Select(x => new Product() { name = x.ToString("Product 0") });
+        }
 	}
 }
