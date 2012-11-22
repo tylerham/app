@@ -17,7 +17,7 @@ namespace app.specs
 			                 	{
 									model_to_show = new ADummyModel();
 
-									view_type_finder = model => model.GetType() == typeof(ADummyModel) ? typeof(ADummyModelView) : typeof(TheWrongViewType);
+									view_type_finder = type => type == typeof(ADummyModel) ? typeof(ADummyModelView) : typeof(TheWrongViewType);
 									depends.on(view_type_finder);
 
 			                 		expected_result = fake.an<IHttpHandler>();

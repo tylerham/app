@@ -2,5 +2,5 @@
 
 namespace app.web.core.aspnet
 {
-	public delegate Type IGetViewTypeForAModel(object model);
+	public delegate Type IGetViewTypeForAModel(Type modelType);
 }
